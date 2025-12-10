@@ -13,20 +13,59 @@ let funny_quotes = [
     "Do not take life too seriously. You will never get out of it alive."
 ]
 
-function generatingQuotes() {
+let index= 0;
+
+function selectingQuotes() {
     let selected_category= document.getElementById("category").value;
-    let quote;
 
     if (selected_category === "motivation") {
-        quotes = motivational_quotes;
+        return motivational_quotes;
     }
     else {
-        quotes = funny_quotes
+        return funny_quotes;
+    }
+}
+
+function generatingQuotes() {
+    let quotes = selectingQuotes();
+    document.getElementById("quote").innerText = quotes[index];
+}
+
+
+function startQuote() {
+    index = 0;
+
+    let quotes = selectingQuotes();
+
+    document.getElementById("quote").innerText=quotes[index];
+
+    document.getElementById("startbtn").style.display="none";
+
+    document.getElementById("prevbtn").style.display="inline-block";
+
+    document.getElementById("nextbtn").style.display="inline-block"
+}
+
+function previousQuote() {
+    let previous_quotes= selectingQuotes();
+
+    index--;
+
+    if (index<0) {
+        index = previous_quotes.length - 1;
     }
 
-    let num = Math.random();      
-    let position = num * quotes.length;
-    let index = parseInt(position);     // convert to whole number
+    generatingQuotes();
+}
 
-    document.getElementById("quote").innerText = quotes[index];
+function nextQuote() {
+    let next_quotes= selectingQuotes();
+
+    index++;
+
+    if (index === next_quotes.length) {
+        index = 0;
+    }
+
+    generatingQuotes();
 }

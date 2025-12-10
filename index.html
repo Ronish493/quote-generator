@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Quote Generator</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
 
-    <body>
-        <div class="container">
-            <h2>Quote Generator</h2>
+<head>
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-            <select name="" id="category">
-                <option value="motivation">Motivational Quotes</option>
-                <option value="funny">Funny Quotes</option>
-            </select>
+<body>
+    <div class="container">
+        <h2>Quote Generator</h2>
 
-            <p id="quote">Select a category.</p>
-            <button onclick="generatingQuotes()">New Quote</button>
-        </div>
+        <select name="" id="category">
+            <option value="motivation">Motivational Quotes</option>
+            <option value="funny">Funny Quotes</option>
+        </select>
 
-        <script src="script.js"></script>
-    </body>
+        <p id="quote">Select a category.</p>
+        <button id="startbtn" onclick="startQuote()">Start</button>
+        <button id="prevbtn" onclick="previousQuote()" style="display:none;">Prev</button>
+        <button id="nextbtn" onclick="nextQuote()" style="display: none;">Next</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
