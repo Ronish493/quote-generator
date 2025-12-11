@@ -11,15 +11,19 @@
     <div class="container">
         <h2>Quote Generator</h2>
 
-        <select name="" id="category">
+        <select id="category" onchange="showButtons()">
+            <option value="">Choose Category</option>
             <option value="motivation">Motivational Quotes</option>
             <option value="funny">Funny Quotes</option>
         </select>
 
         <p id="quote">Select a category.</p>
-        <button id="startbtn" onclick="startQuote()">Start</button>
+        <div id="button-container">
+        <button id="startbtn" onclick="startQuote()" style="display: none;">Start</button>
         <button id="prevbtn" onclick="previousQuote()" style="display:none;">Prev</button>
-        <button id="nextbtn" onclick="nextQuote()" style="display: none;">Next</button>
+        <button id="nextbtn" onclick="nextQuote()" style="display: none;">Next</button><br>
+        <button id="randombtn" onclick="randomQuote()" style="display: none;">Random</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
