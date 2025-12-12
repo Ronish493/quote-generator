@@ -1,43 +1,111 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
+    background-color: #f4f4f9;
+    color: #1a1a1a;
     text-align: center;
     padding-top: 80px;
 }
 
 .container {
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
     margin: auto;
-    background:powderblue;
-    padding: 10px;
-    border-radius: 10px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
     box-shadow: 10px 10px 5px gray;
+    box-sizing: border-box;
 }
+
 button {
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 10px 20px;
     border-radius: 10px;
-    background-color: lightpink;
-    
+    background-color: #4a90e2;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #357ac9;
 }
 
 select {
     margin-top: 5px;
     margin-bottom: 5px;
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
-    background-color: lightpink;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #button-container {
-    margin-top: 20px;
-    justify-content: center;
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
+#line1, #line2 {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #quote {
-    height : 50px;
+    margin: 20px;
+    height : 150px;
+    overflow-y: auto; /* scroll if quote is too long */
+    display: flex;
+    align-items: center; /* vertically center the text */
+    justify-content: center; /* horizontally center the text */
+    padding: 10px;
+    text-align: center;
 
+}
+
+.dark-mode {
+    background-color: #181818;
+    color: white;
+}
+
+.dark-mode .container{
+    background: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+}
+
+#increasefont, #decreasefont {
+    padding: 8px 15px;
+}
+
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 40px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    #quote {
+        min-height: 60px;
+        font-size: 14px;
+    }
+
+    #increasefont, #decreasefont {
+        padding: 5px 10px;
+    }
+}
+
+#category {
+    text-align: center;
 }
