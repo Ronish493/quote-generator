@@ -108,9 +108,11 @@ let funny_quotes = [
 ]
 
 let index= 0;
-// let looped = false;
+
 let quotesStarted = false;
 let currentFontSize = 20;
+let looped = false;
+let history = [];
 
 function selectingQuotes() {
     let selected_category= document.getElementById("category").value;
@@ -156,48 +158,55 @@ function showButtons() {
 function startQuote() {
     index = 0;
 
-    let quotes = selectingQuotes();
+    history = [];
 
-    document.getElementById("quote").innerText=quotes[index];
 
     document.getElementById("startbtn").style.display="none";
-
-    document.getElementById("prevbtn").style.display="hidden";
-
     document.getElementById("nextbtn").style.display="inline-block"
 
     quotesStarted = true;
 
 }
 
-function previousQuote() {
-    let previous_quotes = selectingQuotes();
-    // let prevBtn = document.getElementById("prevbtn");
+// function previousQuote() {
+//     let previous_quotes = selectingQuotes();
+//     // let prevBtn = document.getElementById("prevbtn");
 
-    // CASE 1: user is at index 0 AND has NOT looped yet → prev should do nothing
-    if (index === 0 && looped === false) {
-        // prevBtn.disabled = true;
-        return;  
-    }
+//     // CASE 1: user is at index 0 AND has NOT looped yet → prev should do nothing
+//     if (index === 0 && looped === false) {
+//         // prevBtn.disabled = true;
+//         return;  
+//     }
 
-    // prevBtn.disabled = false;
+//     // prevBtn.disabled = false;
 
-    // allow previous navigation
-    index--;
+//     // allow previous navigation
+//     index--;
 
-    // CASE 2: if index becomes negative after full loop → go to last quote
-    if (index < 0) {
-        index = previous_quotes.length - 1;
-    }
+//     // CASE 2: if index becomes negative after full loop → go to last quote
+//     if (index < 0) {
+//         index = previous_quotes.length - 1;
+//     }
 
-    generatingQuotes();
+//     generatingQuotes();
     
+
+// }
+
+function previousQuote() {
+    if (history.length === 0) {
+        return;
+    }
+    index = history.pop();
+    generatingQuotes();
 
 }
 
 
 function nextQuote() {
     let next_quotes= selectingQuotes();
+
+    history.push(index);
 
     index++;
 
@@ -216,9 +225,10 @@ function nextQuote() {
 
 function randomQuote() {
     let quotes = selectingQuotes();
-    let randomIndex = Math.floor(Math.random()*quotes.length);
-    index = randomIndex;
-    document.getElementById("quote").innerText = quotes[randomIndex];
+    history.push(index);
+    index = Math.floor(Math.random()*quotes.length);
+    generatingQuotes();
+    document.getElementById("prevbtn").style.display = "inline-block";
 
 }
 
